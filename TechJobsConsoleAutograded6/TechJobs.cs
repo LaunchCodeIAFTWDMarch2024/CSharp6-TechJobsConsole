@@ -140,68 +140,22 @@ namespace TechJobsConsoleAutograded6
         // TODO: complete the PrintJobs method.
         public void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
-            foreach (Dictionary<string, string> job in someJobs) {
-                if (job.Count > 0) 
+            if (someJobs.Count == 0) 
+            {
+                Console.WriteLine("No results");
+                return;
+            }
+
+            foreach (Dictionary<string, string> job in someJobs) 
+            {
+                string jobListing = Environment.NewLine + "*****" + Environment.NewLine;
+                foreach (string property in job.Keys)
                 {
-                    string jobListing = Environment.NewLine + "*****" + Environment.NewLine;
-                    foreach (string property in job.Keys)
-                    {
-                        jobListing += property + ": " + job[property] + Environment.NewLine;
-                    }
-                    jobListing += "*****";
-                Console.WriteLine(jobListing);
+                    jobListing += property + ": " + job[property] + Environment.NewLine;
                 }
-                else
-                {
-                    Console.WriteLine("No Results");
-                }
+                jobListing += "*****";
+            Console.WriteLine(jobListing);
             }
         }
-        //delaney code
-        // public void PrintJobs(List<Dictionary<string, string>> someJobs)
-        // {
-        //     if (someJobs.Count > 0)
-        //     {
-        //         foreach (Dictionary<string, string> job in someJobs)
-        //         {
-        //             Console.WriteLine("*****");
-        //             foreach (KeyValuePair<string, string> listing in job)
-        //             {
-        //                 Console.WriteLine($"{listing.Key}: {listing.Value}");
-        //             }
-        //             Console.WriteLine("*****\n");
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine("No Results Found");
-        //     }
-        // }
-
-        // solution code
-        // public void PrintJobs(List<Dictionary<string, string>> someJobs)
-        // {
-        //     if (someJobs.Count == 0)
-        //     {
-        //         Console.WriteLine("No results");
-        //         return;
-        //     }
-
-        //     foreach (Dictionary<string, string> job in someJobs)
-        //     {
-        //         string jobInfo = Environment.NewLine + "*****" + Environment.NewLine;
-
-        //         foreach (string jobColumn in job.Keys)
-        //         {
-        //             jobInfo += (jobColumn + ": " + job[jobColumn] + Environment.NewLine);
-        //         }
-
-        //         jobInfo += "*****";
-
-        //         Console.WriteLine(jobInfo);
-
-        //     }
-        // }
     }
 }
