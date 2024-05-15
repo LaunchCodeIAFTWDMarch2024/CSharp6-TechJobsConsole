@@ -6,12 +6,14 @@ namespace TechJobsConsoleAutograded6
 	public class JobData
 	{
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
+        static List<Dictionary<string,string>> AllJobsCopy = new(AllJobs);
         static bool IsDataLoaded = false;
 
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            return AllJobs;
+            
+            return AllJobsCopy;
         }
 
         /*
@@ -24,7 +26,7 @@ namespace TechJobsConsoleAutograded6
 
             List<string> values = new List<string>();
 
-            foreach (Dictionary<string, string> job in AllJobs)
+            foreach (Dictionary<string, string> job in AllJobsCopy)
             {
                 string aValue = job[column];
 
@@ -33,7 +35,7 @@ namespace TechJobsConsoleAutograded6
                     values.Add(aValue);
                 }
             }
-
+            values.Sort();
             return values;
         }
 
@@ -49,20 +51,20 @@ namespace TechJobsConsoleAutograded6
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
-            foreach (Dictionary<string,string> row in AllJobs)
+            foreach (Dictionary<string,string> row in AllJobsCopy)
             {
                 foreach (KeyValuePair<string,string> column in row)
                 {
-                    if (column.Value.Contains(value))
+                    if (column.Value.ToLower().Contains(value.ToLower()))
                     {
                         if (!jobs.Contains(row))
                         {
                             jobs.Add(row);
                         }
-                        else
-                        {
-                            Console.WriteLine("not added");
-                        }
+                        // else
+                        // {
+                        //     Console.WriteLine("not added");
+                        // }
                         
                     }
                 }
@@ -85,13 +87,13 @@ namespace TechJobsConsoleAutograded6
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
-            foreach (Dictionary<string, string> row in AllJobs)
+            foreach (Dictionary<string, string> row in AllJobsCopy)
             {
                 string aValue = row[column];
 
 
                 //TODO: Make search case-insensitive
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
@@ -138,7 +140,7 @@ namespace TechJobsConsoleAutograded6
                 {
                     rowDict.Add(headers[i], row[i]);
                 }
-                AllJobs.Add(rowDict);
+                AllJobsCopy.Add(rowDict);
             }
 
             IsDataLoaded = true;
