@@ -47,15 +47,23 @@ namespace TechJobsConsoleAutograded6
             // load data, if not already loaded
             LoadData();
 
-            List<Dictionary<string, string>> jobs = new();
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
             foreach (Dictionary<string,string> row in AllJobs)
             {
                 foreach (KeyValuePair<string,string> column in row)
                 {
-                    if (column.Value.Equals(value))
+                    if (column.Value.Contains(value))
                     {
-                        Console.WriteLine("Found a value match");
+                        if (!jobs.Contains(row))
+                        {
+                            jobs.Add(row);
+                        }
+                        else
+                        {
+                            Console.WriteLine("not added");
+                        }
+                        
                     }
                 }
             }
