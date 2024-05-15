@@ -47,7 +47,20 @@ namespace TechJobsConsoleAutograded6
             // load data, if not already loaded
             LoadData();
 
-            return null;
+            List<Dictionary<string, string>> jobs = new();
+
+            foreach (Dictionary<string,string> row in AllJobs)
+            {
+                foreach (KeyValuePair<string,string> column in row)
+                {
+                    if (column.Value.Equals(value))
+                    {
+                        Console.WriteLine("Found a value match");
+                    }
+                }
+            }
+
+            return jobs;
         }
 
         /**
