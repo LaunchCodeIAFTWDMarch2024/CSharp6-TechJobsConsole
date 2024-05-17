@@ -11,8 +11,8 @@
     <None Remove="job_data.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="**/*">
+    <!-- <Content Include="**/*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Content> -->
   </ItemGroup>
 </Project>
